@@ -1,0 +1,33 @@
+/* Estilos principais do Yulia Pet Shop & Spa */
+
+/* Estilos para ícones Remix */
+:where([class^="ri-"])::before { 
+    content: "\f3c2"; 
+}
+
+/* Estilos personalizados */
+.font-pacifico {
+    font-family: 'Pacifico', cursive;
+}
+
+/* Estilos para botões arredondados */
+.rounded-button {
+    border-radius: 8px;
+}
+
+/* Animações e transições */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+    }
+}

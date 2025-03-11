@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada - Yulia Pet Shop & Spa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#FF8B8B',
+                    secondary: '#4A90A0'
+                },
+                borderRadius: {
+                    'button': '8px'
+                }
+            }
+        }
+    }
+    </script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <div class="flex-grow flex items-center justify-center">
+        <div class="max-w-xl mx-auto px-4 py-16 text-center">
+            <div class="mb-8">
+                <i class="ri-error-warning-line text-primary text-8xl"></i>
+            </div>
+            <h1 class="text-4xl font-bold mb-4">Página Não Encontrada</h1>
+            <p class="text-lg text-gray-600 mb-8">Ops! Parece que você está procurando por uma página que não existe.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="/" class="bg-primary text-white px-6 py-3 rounded-button hover:bg-opacity-90 inline-block">
+                    Voltar para a Página Inicial
+                </a>
+                <a href="/#contato" class="border border-primary text-primary px-6 py-3 rounded-button hover:bg-primary hover:text-white inline-block">
+                    Entre em Contato
+                </a>
+            </div>
+            <div class="mt-12">
+                <img src="https://public.readdy.ai/ai/img_res/c7744f5573e386bfa9ae13313aae9ed8.jpg" 
+                    alt="Cachorro fofo" 
+                    class="w-64 h-64 object-cover rounded-full mx-auto shadow-lg" />
+            </div>
+        </div>
+    </div>
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-2xl font-pacifico text-primary">Yulia Pet</span>
+            <p class="mt-2 text-gray-400">&copy; 2025 Yulia Pet Shop. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

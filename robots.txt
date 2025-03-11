@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /css/
+Disallow: /js/
+
+# Sitemap
+Sitemap: https://yuliapetshop.com.br/sitemap.xml
