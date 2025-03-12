@@ -4,13 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yulia Pet Shop & Spa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <!-- Scripts -->
     <script src="js/main.js" defer></script>
+    <script src="js/chat.js" defer></script>
+    <!-- n8n Chat Widget CDN -->
+    <script src="https://cdn.n8n.io/chat-widget/v1/n8n-chat-widget.min.js" defer></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#FF8B8B',
+                    secondary: '#4A90A0'
+                },
+                fontFamily: {
+                    'pacifico': ['"Pacifico"', 'cursive'],
+                    'sans': ['"Poppins"', 'sans-serif']
+                },
+                borderRadius: {
+                    'none': '0px',
+                    'sm': '4px',
+                    DEFAULT: '8px',
+                    'md': '12px',
+                    'lg': '16px',
+                    'xl': '20px',
+                    '2xl': '24px',
+                    '3xl': '32px',
+                    'full': '9999px',
+                    'button': '8px'
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navegação -->
@@ -444,5 +485,72 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chat n8n -->
+    <button id="chat-toggle-btn" class="chat-button animate-bounce">
+        <i class="ri-chat-3-line text-2xl"></i>
+    </button>
+
+    <div id="chat-container" class="chat-container chat-hidden">
+        <div class="chat-header">
+            <div class="chat-header-title">
+                <div class="chat-header-avatar">
+                    <i class="ri-customer-service-2-line"></i>
+                </div>
+                <h3>Agendador Yulia Pet</h3>
+            </div>
+            <button id="chat-close-btn" class="chat-close-btn">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <!-- Mensagem inicial do agente -->
+            <div class="chat-message chat-message-agent">
+                <div class="chat-bubble">
+                    Olá! Sou o assistente virtual da Yulia Pet Shop. Como posso ajudar você hoje? Posso agendar serviços, informar preços ou responder dúvidas sobre nossos serviços.
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Digite sua mensagem..." onkeypress="handleChatKeyPress(event)">
+            <button class="chat-send-btn" onclick="sendMessage()">
+                <i class="ri-send-plane-fill"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Configuração do n8n Chat Widget -->
+    <script>
+        // Inicialização do widget n8n (será ativado quando o CDN carregar)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica se o widget n8n está disponível
+            if (typeof n8nChatWidget !== 'undefined') {
+                // Configuração do widget n8n
+                n8nChatWidget.init({
+                    chatbotId: 'yulia-petshop-agendador',
+                    apiEndpoint: 'https://cloud.n8n.io/api/v1',
+                    containerSelector: '#chat-messages',
+                    inputSelector: '#chat-input',
+                    sendButtonSelector: '.chat-send-btn',
+                    theme: {
+                        primaryColor: '#FF8B8B',
+                        fontFamily: 'inherit',
+                        userMessageBackgroundColor: '#FF8B8B',
+                        userMessageTextColor: '#ffffff',
+                        botMessageBackgroundColor: '#ffffff',
+                        botMessageTextColor: '#333333'
+                    },
+                    welcomeMessage: 'Olá! Sou o assistente virtual da Yulia Pet Shop. Como posso ajudar você hoje? Posso agendar serviços, informar preços ou responder dúvidas sobre nossos serviços.',
+                    i18n: {
+                        placeholderText: 'Digite sua mensagem...',
+                        sendButtonLabel: 'Enviar'
+                    }
+                });
+            } else {
+                // Fallback para o chat básico se o n8n não estiver disponível
+                console.log('n8n Chat Widget não disponível, usando chat básico');
+            }
+        });
+    </script>
 </body>
 </html>
